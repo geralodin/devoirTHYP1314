@@ -1,0 +1,28 @@
+<h1>
+    Listes des notes
+</h1>
+<table class="table-striped table-bordered table-condensed">
+    <tr>
+        <td>Nom</td>
+        <td>Matière</td>
+        <td>Note</td>
+    </tr>
+<?php 
+ foreach ($notes_etudiants as $ne){
+          ?>
+    <td>
+        <?php echo $ne['nom'];?>
+    </td>
+    <td>
+        <?php echo $ne['intitule'];?>
+    </td>
+    <td>
+        <?php echo $ne['notes'];?>
+    </td>
+    
+ <?php
+ 
+ }
+ 
+ ?>
+</table>
