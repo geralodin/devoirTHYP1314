@@ -7,7 +7,7 @@ $(function(){
         var id = "#zone_edit_"+v;
         var form = "#form_note_"+v;
         var moyenne = "#zone_edit_moyenne_"+v;
-        
+        var graph = "#zoneeditgraph"+v;
         console.log(id);
         $.ajax({
                 type:"GET",
@@ -18,6 +18,7 @@ $(function(){
                     $(id).html(server_response).fadeIn(2000);
                     $(form).hide();
                     $(moyenne).hide();
+                    $(graph).hide();
                 }
         });
     });

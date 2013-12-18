@@ -50,3 +50,10 @@ a:hover{
     background: gold;
     color: black;
 }
+
+.diagramme{
+    bottom: 215px;
+    left: 250px;
+    padding-left: 10px;
+    position: relative;
+}

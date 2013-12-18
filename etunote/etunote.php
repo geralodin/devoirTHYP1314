@@ -68,6 +68,7 @@ if (isset($handle) && !empty($handle)) {
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <link type="text/css" href="css/style.css" rel="stylesheet" />
     </head>
     <body>
@@ -85,6 +86,7 @@ if (isset($handle) && !empty($handle)) {
                         <a href="#" class="add_note" id="<?php echo $p->nom; ?>">Ajouter note</a>
                         <a href="#" class="show_note" id="<?php echo $p->nom; ?>">Afficher notes</a>
                         <a href="#" class="show_moyenne" id="<?php echo $p->nom; ?>">Afficher la moyenne</a>
+                        <a href="#" class="show_graphe" id="<?php echo $p->nom; ?>">Afficher graphe</a>
                     </div>
 
                 </div>
@@ -97,6 +99,10 @@ if (isset($handle) && !empty($handle)) {
             <div id="zone_edit_moyenne_<?php echo $p->nom; ?>" class="form_note">
 
             </div>
+            
+            <div id="zoneeditgraph<?php echo $p->nom; ?>" class="diagramme">
+                
+            </div>
         <hr/>
          
 
@@ -106,5 +112,6 @@ if (isset($handle) && !empty($handle)) {
     <script type="text/javascript" src="js/edit_form_note.js"></script>
     <script type="text/javascript" src="js/edit_note.js"></script>
     <script type="text/javascript" src="js/afficher_moyenne.js"></script>
+    <script type="text/javascript" src="js/edit_with_graph.js"></script>
     </body>
 </html>
