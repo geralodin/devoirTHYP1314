@@ -1,5 +1,6 @@
 <?php
 include_once 'objet/Personne.php';
+include_once 'db_connexion/connexion.php';
 
 // lecture d'un flux RSS 
 $handle = fopen("https://picasaweb.google.com/data/feed/base/user/112537161896190034287/albumid/5931538032377292977?alt=rss&kind=photo&authkey=Gv1sRgCJjJwc265LnxigE&hl=fr", "rb");
@@ -66,31 +67,44 @@ if (isset($handle) && !empty($handle)) {
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <link type="text/css" href="css/style.css" rel="stylesheet" />
     </head>
     <body>
-        <?php 
-foreach($personne as $p){ ?>
-    <div class="photo">
-        <img <?php echo $p->img;?>
-        <p> Nom : <?php echo $p->nom; ?></p>
-        <p> Prenom : <?php echo $p->prenom; ?></p>
-        <div class="diagramme">
-            <p id="headBlock">
-                <em>Les notes de l'année</em>.
-            </p>
-            
-        </div>
-        <div class="note">
-            <a href="form_ecrire.php?nom=<?php  echo $p->nom; ?>" id="add_note">Ajouter note</a>
-            <a href="#" id="show_note">Afficher notes</a>
-        </div>
-        
-    </div>
-    <hr/>
-<?php }
-?>
-    <div id="form_note">
-        
-    </div>
+        <div id="content">
+            <div id="results"></div>
+            <h2>Liste des étudiants THYP 2013 - 2014</h2>
+            <?php 
+            foreach($personne as $p){ ?>
+                <div class="photo">
+                    <img <?php echo $p->img;?>
+                    <p> Nom : <span><?php echo $p->nom; ?></span></p>
+                     <p> Prenom : <?php echo $p->prenom; ?></p>
+
+                    <div class="note">
+                        <a href="#" class="add_note" id="<?php echo $p->nom; ?>">Ajouter note</a>
+                        <a href="#" class="show_note" id="<?php echo $p->nom; ?>">Afficher notes</a>
+                        <a href="#" class="show_moyenne" id="<?php echo $p->nom; ?>">Afficher la moyenne</a>
+                    </div>
+
+                </div>
+            <div id="form_note_<?php echo $p->nom; ?>" class="form_note">
+
+            </div>
+            <div id="zone_edit_<?php echo $p->nom; ?>" class="form_note">
+
+            </div>
+            <div id="zone_edit_moyenne_<?php echo $p->nom; ?>" class="form_note">
+
+            </div>
+        <hr/>
+         
+
+    <?php }
+    ?>
+    </div>      
+    <script type="text/javascript" src="js/edit_form_note.js"></script>
+    <script type="text/javascript" src="js/edit_note.js"></script>
+    <script type="text/javascript" src="js/afficher_moyenne.js"></script>
     </body>
 </html>

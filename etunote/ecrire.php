@@ -1,13 +1,19 @@
 <?php
-if(isset($_POST['note'])){
-    var_dump($_POST);
-    
-    if(!empty($_POST['matiere'])&& !empty($_POST['note'])){
-        $id_students = $_POST['idetudiants'];
-        $id_matiere = $_POST['matiere'];
-        $note = $_POST['note'];
-        $db->exec("INSERT INTO etudiants_has_matiere($id_students,$id_matiere,$note)");
+include_once 'db_connexion/connexion.php';
+extract($_POST);
+
+if(isset($note)){
+    if(!empty($note)){
+        $id = (int)$id;
+        $matiere = (int)$matiere;
+        $note = (int)$note;
         
-    }
+        $sql = "INSERT INTO etudiants_has_matiere (etudiants_idetudiants, matiere_idmatiere, notes) VALUES (:id,:matiere, :note)";
+        $q = $db->prepare($sql);
+        $q->execute(array(':id'=>$id,':matiere'=>$matiere, 'note'=>$note));
+        
+        echo'Enregistrement reussi!';
+   }
 }
+
 ?>
